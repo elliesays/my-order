@@ -15,3 +15,23 @@ spring:
         output:
           destination: shop
           contentType: application/json
+
+---
+server:
+  port: 8080
+
+spring:
+  profiles: docker
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: my-kafka.kafka.svc.cluster.local:9092
+      bindings:
+        input:
+          group: product
+          destination: shop
+          contentType: application/json
+        output:
+          destination: shop
+          contentType: application/json
